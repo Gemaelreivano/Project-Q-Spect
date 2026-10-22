@@ -148,8 +148,7 @@ Karena **Q-Spect** dirancang dengan arsitektur *100% Client-Side*, Anda tidak me
 
 1. **Clone Repositori Ini:**
    ```bash
-   git clone https://github.com/Gemaelreivano/q-spect.git
-   cd q-spect
+   https://github.com/Gemaelreivano/Project-Q-Spect.git
    ```
 2. **Jalankan Menggunakan Server Lokal:**
    - **VS Code:** Klik kanan pada `index.html` lalu pilih **"Open with Live Server"**.
