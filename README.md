@@ -172,7 +172,7 @@ Detail kontribusi lengkap dapat dilihat pada berkas [`docs/contributions.md`](./
 | :-: | :--- | :--- |
 | 1 | **Fharel Eldifary** | **Lead Architect** — Perancangan *Context Engineering* (`AGENTS.md`, `SKILLS.md`), Manajemen Git, & Logika Keamanan OSINT (`qris-decoder.js`, `security.js`). |
 | 2 | **[Nama Anggota 2]** | **Frontend / UI Developer** — Orkestrasi desain antarmuka via *Google Stitch MCP* (`DESIGN.md`) & Implementasi UI/UX (`index.html`, `style.css`). |
-| 3 | **[Gemael Reivano]** | **Integration & QA Tester** — Integrasi *Google Gemini API* (`threat-analyzer.js`), Penyusunan Skenario Uji (`test-cases.md`), & Audit Anti-XSS. |
+| 3 | **Gemael Reivano** | **Integration & QA Tester** — Integrasi *Google Gemini API* (`threat-analyzer.js`), Penyusunan Skenario Uji (`test-cases.md`), & Audit Anti-XSS. |
 
 ---
 
