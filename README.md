@@ -131,7 +131,7 @@ Q-Spect/
 
 Proyek ini dibangun sepenuhnya mengikuti disiplin **Context Engineering** dan **Harness Engineering** modern untuk mencegah *AI-Slop* serta menjaga efisiensi anggaran token:
 
-1. 📜 **[`AGENTS.md`](./AGENTS.md) (System Constitution)**  
+1. 📜 **[`AGENTS.md`](./AGENTS.md) (System Constitguution)**  
    Mengatur pembagian peran agen (*Security Architect*, *UI Stitch Orchestrator*, *Cognitive Engineer*) dan menegakkan batasan keras (*Zero-Trust DOM*, larangan `innerHTML`, serta privasi *client-side*).
 2. 🎨 **[`DESIGN.md`](./DESIGN.md) (Visual DNA Specification)**  
    Mendokumentasikan token warna heksadesimal bertema *Dark Cybersecurity*, tipografi, dan hierarki komponen yang menjadi acuan bagi **Google Stitch MCP** untuk men-generate antarmuka secara otomatis (*Zero-Touch UI Generation*).
@@ -148,7 +148,7 @@ Karena **Q-Spect** dirancang dengan arsitektur *100% Client-Side*, Anda tidak me
 
 1. **Clone Repositori Ini:**
    ```bash
-   git clone https://github.com/username-anda/q-spect.git
+   git clone https://github.com/Gemaelreivano/q-spect.git
    cd q-spect
    ```
 2. **Jalankan Menggunakan Server Lokal:**
