@@ -168,11 +168,13 @@ Karena **Q-Spect** dirancang dengan arsitektur *100% Client-Side*, Anda tidak me
 
 Detail kontribusi lengkap dapat dilihat pada berkas [`docs/contributions.md`](./docs/contributions.md).
 
-| No. | Nama Lengkap | Peran & Kontribusi Utama |
-| :-: | :--- | :--- |
-| 1 | **Fharel Eldifary** | **Lead Architect** — Perancangan *Context Engineering* (`AGENTS.md`, `SKILLS.md`), Manajemen Git, & Logika Keamanan OSINT (`qris-decoder.js`, `security.js`). |
-| 2 | **[Nama Anggota 2]** | **Frontend / UI Developer** — Orkestrasi desain antarmuka via *Google Stitch MCP* (`DESIGN.md`) & Implementasi UI/UX (`index.html`, `style.css`). |
-| 3 | **Gemael Reivano** | **Integration & QA Tester** — Integrasi *Google Gemini API* (`threat-analyzer.js`), Penyusunan Skenario Uji (`test-cases.md`), & Audit Anti-XSS. |
+| No | Nama Lengkap | Peran Utama (Role) | Branch Kerja | Fokus Modul & File Utama |
+| :-: | :--- | :--- | :--- | :--- |
+| **1** | **Gemael Reivano** | **Repo Master & System Synchronization** | `main` / `feature/context-setup` | `AGENTS.md`, `README.md`, `.gitignore`, Manajemen GitHub & Deployment |
+| **2** | **Fahri Ramadhan** | **Design.md & UI/UX MCP Specialist** | `feature/ui-stitch` | `DESIGN.md`, Otomatisasi Google Stitch via MCP, `index.html`, `css/style.css` |
+| **3** | **M. Fharel E.** | **Backend, Core Logic Security & Context Enginner** | `feature/qris-logic` | `js/qris-decoder.js`, `js/security.js` (SHA-256 Blind Hashing & Anti-XSS) |
+| **4** | **Annisa Rahma Salsabila** | **QA Tester** | `feature/google-ai` | `SKILLS.md`, `js/threat-analyzer.js` (Gemini 2.5 Flash API), `js/app.js` |
+| **5** | **Wisnu Fadly** | **Buat PPT & Pitch Deck Master** | `docs/pitch-testing` | `tests/test-cases.md`, `docs/architecture.md`, Pengujian End-to-End & Materi Pitch Deck 6 Menit |
 
 ---
 
