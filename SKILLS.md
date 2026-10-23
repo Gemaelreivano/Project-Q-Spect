@@ -170,3 +170,5 @@ Sebuah tugas dianggap selesai hanya jika:
 3. Pemeriksaan atau tes relevan sudah dijalankan bila tersedia, dan hasilnya dilaporkan secara jujur.
 4. Dampak keamanan, privasi, serta keterbatasan penting telah disebutkan.
 5. Dokumentasi terkait diperbarui bila perilaku atau arsitektur yang didokumentasikan memang berubah.
+
+(masukan ini ke bagian js kalau ada perubahan masukan apa yang di rubah di bagian tests)
