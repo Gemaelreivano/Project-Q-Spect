@@ -1,0 +1,30 @@
+{
+  "name": "q-spect",
+  "version": "1.0.0",
+  "description": "Q-SPECT - QRIS Security, Quishing & Illegal Merchant/Judol Detector with Zero-Knowledge Privacy Architecture",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "qris",
+    "quishing",
+    "judol",
+    "emvco",
+    "zero-knowledge",
+    "fintech",
+    "cybersecurity"
+  ],
+  "author": "Q-Spect Team 2026",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "jimp": "^1.6.1",
+    "jsqr": "^1.4.0"
+  }
+}
