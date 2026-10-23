@@ -1,0 +1,28 @@
+{
+  "name": "project-q-spect",
+  "version": "1.0.0",
+  "description": "Zero-Trust QRIS Fraud, Quishing & Judol Detector with Gemini 2.5 Flash Multimodal Vision",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node tests/run-tests.js"
+  },
+  "keywords": [
+    "qris",
+    "emvco",
+    "cybersecurity",
+    "anti-fraud",
+    "gemini-2.5-flash",
+    "zero-knowledge",
+    "judol-detector"
+  ],
+  "author": "Q-SPECT Security Engineering Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

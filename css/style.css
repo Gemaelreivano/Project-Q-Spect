@@ -1,0 +1,259 @@
+/* ==========================================================================
+   Q-SPECT CYBER-DEFENSE DESIGN SYSTEM (DESIGN.MD SPECIFICATION)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-cyber-deep: #050B1A;
+  --bg-card-glass: rgba(20, 42, 84, 0.42);
+  --border-primary: rgba(56, 189, 248, 0.35);
+  --accent-cyan: #22D3EE;
+  --accent-cyan-dark: #06B6D4;
+  --status-safe: #10B981;
+  --status-warning: #F59E0B;
+  --status-danger: #F43F5E;
+  --text-primary: #F8FAFC;
+  --text-secondary: rgba(224, 242, 254, 0.72);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-cyber-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Dynamic Circuit Canvas Background */
+#circuitCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+/* Ambient Sensor Wrapper with Dynamic Neon Glows */
+.sensor-ambient-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sensor-ambient-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -25px;
+  border-radius: 40px;
+  background: radial-gradient(circle at center, rgba(14, 165, 233, 0.18) 0%, rgba(37, 99, 235, 0.08) 50%, transparent 75%);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  z-index: -1;
+  pointer-events: none;
+  transform: translateZ(0);
+  will-change: background;
+  transition: background 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sensor-ambient-wrapper.safe::before {
+  background: radial-gradient(circle at center, rgba(16, 185, 129, 0.22) 0%, rgba(5, 150, 105, 0.1) 50%, transparent 75%);
+}
+
+.sensor-ambient-wrapper.warning::before {
+  background: radial-gradient(circle at center, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.1) 50%, transparent 75%);
+}
+
+.sensor-ambient-wrapper.danger::before {
+  background: radial-gradient(circle at center, rgba(244, 63, 94, 0.25) 0%, rgba(225, 29, 72, 0.12) 50%, transparent 75%);
+}
+
+/* Crystal Glass Card */
+.crystal-glass-card {
+  background: linear-gradient(145deg, rgba(20, 42, 84, 0.45) 0%, rgba(10, 24, 52, 0.35) 100%);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--border-primary);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -15px rgba(3, 12, 32, 0.65),
+              0 0 60px 10px rgba(14, 165, 233, 0.16),
+              inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.crystal-glass-card.safe-border {
+  border-color: rgba(16, 185, 129, 0.55);
+  box-shadow: 0 25px 50px -15px rgba(3, 12, 32, 0.65),
+              0 0 70px 12px rgba(16, 185, 129, 0.2),
+              inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+.crystal-glass-card.warning-border {
+  border-color: rgba(245, 158, 11, 0.55);
+  box-shadow: 0 25px 50px -15px rgba(3, 12, 32, 0.65),
+              0 0 70px 12px rgba(245, 158, 11, 0.2),
+              inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+.crystal-glass-card.danger-border {
+  border-color: rgba(244, 63, 94, 0.65);
+  box-shadow: 0 25px 50px -15px rgba(3, 12, 32, 0.65),
+              0 0 70px 12px rgba(244, 63, 94, 0.25),
+              inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+/* Scanner Viewport with Corner Brackets & Laser */
+.scanner-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 280px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(5, 15, 35, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.corner-bracket {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--accent-cyan);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 5;
+}
+.corner-tl { top: 8px; left: 8px; border-width: 3px 0 0 3px; border-top-left-radius: 6px; }
+.corner-tr { top: 8px; right: 8px; border-width: 3px 3px 0 0; border-top-right-radius: 6px; }
+.corner-bl { bottom: 8px; left: 8px; border-width: 0 0 3px 3px; border-bottom-left-radius: 6px; }
+.corner-br { bottom: 8px; right: 8px; border-width: 0 3px 3px 0; border-bottom-right-radius: 6px; }
+
+/* Laser Beam Animation */
+.scanner-laser {
+  position: absolute;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #22D3EE, #10B981, #22D3EE, transparent);
+  box-shadow: 0 0 14px #06B6D4, 0 0 26px #10B981;
+  animation: laserSweep 2.4s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 4;
+}
+
+@keyframes laserSweep {
+  0% { top: 8%; opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { top: 90%; opacity: 0.8; }
+}
+
+/* Custom Scrollbar for Telemetry Panel */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(5, 11, 26, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.6);
+}
+
+/* Glass Buttons */
+.btn-glass {
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+.btn-glass:hover {
+  background: rgba(14, 165, 233, 0.25);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.25);
+}
+
+/* Traffic Light Risk Progress Bar */
+.risk-meter-fill {
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+}
+
+/* Pulsing Badge Indicator */
+@keyframes pingSlow {
+  75%, 100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+.pulse-dot {
+  position: relative;
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: inherit;
+  animation: pingSlow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Interactive Preset Grid Cards */
+.preset-card {
+  background: rgba(10, 24, 52, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.preset-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-cyan);
+  background: rgba(14, 42, 84, 0.65);
+  box-shadow: 0 4px 16px rgba(6, 182, 212, 0.15);
+}
+
+/* Back Button Pill Style */
+.btn-back-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(15, 30, 60, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 20px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-back-pill:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-cyan);
+  background: rgba(20, 45, 90, 0.8);
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+}
