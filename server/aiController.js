@@ -78,8 +78,13 @@ async function inspectWithAI(req, res) {
   const { imageBase64, metadata } = req.body;
 
   // ── Smart Fail-Safe Fallback ───────────────────────────────
-  if (!apiKey || apiKey.trim() === '') {
-    console.log('[AI/inspect] No GEMINI_API_KEY — returning smart fallback.');
+  const isInvalidKey = !apiKey || 
+    apiKey.trim() === '' || 
+    apiKey.includes('masukan API') || 
+    apiKey.includes('YOUR_GEMINI_API_KEY');
+
+  if (isInvalidKey) {
+    console.log('[AI/inspect] GEMINI_API_KEY is not set or placeholder is used — returning smart fallback.');
     return res.json(generateSmartFallback(metadata));
   }
 

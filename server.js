@@ -34,7 +34,10 @@ app.get('*', (_req, res) => {
 
 // ── Start ────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  const keyInfo = process.env.GEMINI_API_KEY
+  const isConfigured = process.env.GEMINI_API_KEY && 
+    !process.env.GEMINI_API_KEY.includes('masukan API') && 
+    !process.env.GEMINI_API_KEY.includes('YOUR_GEMINI_API_KEY');
+  const keyInfo = isConfigured
     ? `Configured (${process.env.GEMINI_API_KEY.substring(0, 6)}...)`
     : 'NOT SET (Fallback Active)';
   const modelInfo = process.env.GEMINI_MODEL || 'gemini-flash-latest';
