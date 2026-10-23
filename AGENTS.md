@@ -62,3 +62,5 @@ Jaga pemisahan folder secara disiplin agar 5 anggota tim dapat melakukan `git co
 - `/src/core/*` & `/src/security/*` -> Area kerja **Orang 3 (Parser EMVCo, CRC16 & Hashing SHA-256)**
 - `/src/ai/*` -> Area kerja **Orang 4 (Integrasi Google Gemini API & Kompresi Gambar)**
 - `/docs/*` & Testing -> Area kerja **Orang 1 (Repo Master)** & **Orang 5 (QA & Pitch Deck)**
+
+- (masukan ini ke bagian js kalau ada perubahan masukan apa yang di rubah di bagian tests)
