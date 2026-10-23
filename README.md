@@ -23,7 +23,7 @@
 
 ## 🎯 Mengapa Q-Spect Diciptakan? (Latar Belakang & Tujuan)
 
-Standar pembayaran **QRIS (Quick Response Code Indonesian Standard)** telah merevolusi kemudahan transaksi digital di Indonesia. Namun, di balik kemudahannya, kode QR bersifat sebagai **"Kotak Hitam" (*Visual Blackbox*)** bagi mata manusia. Pengguna awam tidak pernah tahu data apa yang tersembunyi di balik titik-titik piksel tersebut sampai mereka memindainya langsung di dalam aplikasi perbankan/dompet digital.
+Standar pembayaran **QRIS (Quick Response Code Indonesian Standard)** sudah merevolusi kemudahan transaksi digital di Indonesia. Namun, di balik kemudahannya, kode QR bersifat sebagai **"Kotak Hitam" (*Visual Blackbox*)** bagi mata manusia. Pengguna awam tidak pernah tahu data apa yang tersembunyi di balik titik-titik piksel tersebut sampai mereka memindainya langsung di dalam aplikasi perbankan/dompet digital.
 
 Celah psikologis dan teknis ini dieksploitasi secara masif oleh sindikat kejahatan siber untuk:
 1. **Menyamarkan Rekening Deposit Judi Daring (Judol):** Menggunakan nama merchant kamuflase (seperti *"DEPO88"*, *"TOKO GACOR JP"*, atau akun *bot gateway*).
