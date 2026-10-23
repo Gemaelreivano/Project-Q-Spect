@@ -165,6 +165,42 @@ Karena **Q-Spect** dirancang dengan arsitektur *100% Client-Side*, Anda tidak me
 
 ---
 
+## 🧪 Sinkronisasi Hasil Uji & Matriks Pengujian (tests/test-cases.md)
+
+| No | Skenario Uji | Karakteristik Payload | Expected Verdict | Score | Status |
+|:---:|:---|:---|:---|:---:|:---:|
+| 1 | **UMKM Bersih** | Warung Kopi Kenangan (MCC 5812, Statis 11) | `APPROVE / AMAN` | 12/100 | ✅ PASS |
+| 2 | **Kotak Amal Mismatch** | Infaq Masjid Al-Ikhlas (MCC 7994 Game Mismatch) | `WASPADA / ANOMALI` | 78/100 | ✅ PASS |
+| 3 | **Tiket Depo Judol** | Slot Gacor JP (Tag 01:12, Rp 50.137, Tag 62 Ref) | `BAHAYA / BLOCKED` | 98/100 | ✅ PASS |
+| 4 | **Quishing URL Phishing** | Link phishing domain tiruan non-EMVCo | `BAHAYA / PHISHING` | 98/100 | ✅ PASS |
+| 5 | **Manipulasi Checksum** | CRC-16 diubah ke kode palsu | `BAHAYA / INVALID CRC` | 92/100 | ✅ PASS |
+| 6 | **Real Judol Sample 1** | Ku Toko Online (MCC 5816, 22-digit PG Order ID) | `BAHAYA / JUDOL DEPOSIT` | 97/100 | ✅ PASS |
+| 7 | **Real Judol Sample 2** | Novaryn Digicell Apl12 (MCC 5732, 17-char Ticket) | `BAHAYA / JUDOL DEPOSIT` | 97/100 | ✅ PASS |
+| 8 | **Real Judol Sample 3** | Irvan Phone.. (MCC 4812, 20-digit PG Order ID) | `BAHAYA / JUDOL DEPOSIT` | 97/100 | ✅ PASS |
+
+---
+
+## 📝 Catatan Perubahan & Sinkronisasi Modul (Changelog dari tests/)
+
+- **`public/src/core/qrisParser.js`**:
+  - Dibuat sebagai modul inti parser EMVCo UMD/Isomorfik lengkap dengan kalkulator `CRC-16/CCITT-FALSE` dan sanitasi `.trim()`.
+  - Mengimplementasikan deteksi transaksi laundering 4-faktor: QRIS dinamis (`Tag 01=12`), nominal terkunci (`Tag 54>0`), Tag 62 Ref/Bill ID, dan MCC warung mikro (`5411`, `5812`, `5999`, `7299`).
+  - Menambahkan pendeteksi Shell Company Masking pada Tag 59 (kata kunci "SLOT", "DEPO", "HOKI", "JP", "MAXWIN", dll. serta awalan fiktif CV/PT/UD dengan digit acak).
+  - Dilengkapi proteksi *False-Positive Immunity* untuk UMKM kasir dinamis normal.
+- **`public/src/ai/geminiInspector.js`**:
+  - Modul kompresi citra kamera sisi klien berbasis `HTMLCanvasElement` (maksimal 768px, `image/webp`, quality 0.75).
+  - Integrasi inspeksi multimodal Gemini 2.5 Flash melalui rute proxy `/api/ai/inspect` atau direct API call dengan fallback Smart Mock deterministik.
+- **`server.js` & `server/aiController.js`**:
+  - Dual Authentication System: header `'x-goog-api-key'` + URL parameter `?key=`.
+  - Model Fallback Cascade: `gemini-flash-latest` ke `gemini-2.5-flash` dengan safety timeout 8 detik.
+- **`index.html` & `css/style.css`**:
+  - Tombol interaktif `#btnHeaderBack` pada header navigasi.
+  - Floating dock `#scrollDock` dengan scroll halus ke atas dan ke bawah.
+- **`js/app.js`**:
+  - Integrasi layer navigation, sinkronisasi verdict Lapis 3 Multimodal AI, dan diagnostik runtime console log.
+
+---
+
 ## 👥 Tim Pengembang
 
 Detail kontribusi lengkap dapat dilihat pada berkas [`docs/contributions.md`](./docs/contributions.md).

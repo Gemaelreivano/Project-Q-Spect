@@ -1,10 +1,12 @@
 {
   "mcpServers": {
     "stitch": {
-      "url": "https://stitch.googleapis.com/mcp",
-      "type": "http",
-      "headers": {
-        "Accept": "application/json",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-stitch"
+      ],
+      "env": {
         "X-Goog-Api-Key": "API-KEY-KALIAN"
       }
     }

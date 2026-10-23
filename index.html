@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description"
+    content="Q-SPECT — Pre-Transaction QRIS Security, Quishing & Illegal Merchant/Judol Detector dengan Arsitektur Zero-Knowledge Privacy & Saringan 3 Lapis.">
+  <meta name="theme-color" content="#050B1A">
+  <title>Q-SPECT — QRIS Security, Quishing & Judol Detector</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Core Stylesheet: Crystal Glass & Auralis Dark Mode -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Dynamic Cyber Blue Matrix Circuit Canvas -->
+  <canvas id="circuitCanvas"></canvas>
+
+  <!-- Mobile-First App Viewport (Max 440px) -->
+  <div class="app-container">
+
+    <!-- Ambient Elevation Glow Wrapper -->
+    <div id="ambientWrapper" class="sensor-ambient-wrapper">
+
+      <!-- Crystal Glass Main Card -->
+      <div class="crystal-glass-card">
+
+        <!-- Global Header & Navigation -->
+        <header class="app-header">
+          <div class="header-left">
+            <!-- Tombol Back Interaktif -->
+            <button id="btnHeaderBack" class="btn-header-back hidden" title="Kembali ke layar sebelumnya"
+              aria-label="Kembali ke layar sebelumnya">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <span class="btn-header-back__label">Kembali</span>
+            </button>
+
+            <div class="header-brand">
+              <svg class="header-brand__logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(6,182,212,0.15)" />
+                <circle cx="12" cy="11" r="3" stroke="#22D3EE" stroke-width="2" />
+              </svg>
+              <span class="header-brand__name">Q-SPECT</span>
+            </div>
+          </div>
+
+          <div class="header-breadcrumb" id="breadcrumbText">Layer 1 / Welcome</div>
+
+          <div class="header-status">
+            <span class="status-dot"></span>
+            <span>ONLINE</span>
+          </div>
+        </header>
+
+        <!-- Main Viewport Scrollable Content -->
+        <main class="app-main">
+
+          <!-- ========================================== -->
+          <!-- LAYER 1: Welcome & Pre-Inspection Orientation -->
+          <!-- ========================================== -->
+          <section id="layerWelcome" class="layer">
+            <div class="welcome-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#22D3EE" />
+                <path d="M9 12l2 2 4-4" stroke="#10B981" stroke-width="2.2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <h1 class="welcome-title">Q-SPECT QRIS Intelligence</h1>
+
+            <p class="welcome-desc">
+              Perisai inspeksi independen sebelum saldo Anda berpindah. Lindungi transaksi dari tiket deposit judi
+              online, tautan quishing palsu, dan manipulasi kotak amal.
+            </p>
+
+            <div class="pipeline mt-2">
+              <div class="pipeline-node">
+                <span class="pipeline-dot pipeline-dot--pass"></span>
+                <span class="pipeline-label">Lapis 1</span>
+                <span class="pipeline-status">CRC16 & Quishing</span>
+              </div>
+              <div class="pipeline-node">
+                <span class="pipeline-dot pipeline-dot--pass"></span>
+                <span class="pipeline-label">Lapis 2</span>
+                <span class="pipeline-status">ZK Heuristik Judol</span>
+              </div>
+              <div class="pipeline-node">
+                <span class="pipeline-dot pipeline-dot--pass"></span>
+                <span class="pipeline-label">Lapis 3</span>
+                <span class="pipeline-status">Gemini 2.5 Flash</span>
+              </div>
+            </div>
+
+            <button id="btnStartScan" class="btn btn--primary mt-4" style="height: 52px; font-size: 0.95rem;">
+              <span>Mulai Scan QRIS Sekarang</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </section>
+
+          <!-- ========================================== -->
+          <!-- LAYER 2: Scanner, Upload & Demo Simulation -->
+          <!-- ========================================== -->
+          <section id="layerScanner" class="layer hidden">
+
+            <!-- Gemini API Configuration Pill -->
+            <div class="api-config-pill">
+              <input type="password" id="inputApiKey" placeholder="Opsional: Kunci Gemini API (AI Studio)"
+                autocomplete="off">
+              <button id="btnSaveApiKey">Simpan</button>
+              <span id="apiKeyStatus" class="status-pill pill-mock">Smart Mock Active</span>
+            </div>
+
+            <!-- Tab Controller: Kamera vs Upload -->
+            <div class="tab-controller">
+              <button id="tabCamera" class="tab-btn active">Kamera Sensor</button>
+              <button id="tabUpload" class="tab-btn">Upload Berkas</button>
+            </div>
+
+            <!-- Camera Viewfinder -->
+            <div id="viewCamera">
+              <div id="scannerViewport" class="scanner-viewport">
+                <video id="cameraVideo" playsinline autoplay muted></video>
+                <div class="scanner-corners"></div>
+                <div class="scanner-corners-bottom"></div>
+                <div id="scannerLaser" class="scanner-laser"></div>
+              </div>
+            </div>
+
+            <!-- Dropzone Viewport -->
+            <div id="viewUpload" class="hidden">
+              <div id="dropzone" class="dropzone">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <p class="dropzone__text">Klik atau seret gambar QRIS ke area ini</p>
+                <span class="dropzone__formats">Format: PNG, JPG, WEBP (Otomatis Dikompresi)</span>
+                <input type="file" id="fileInput" accept="image/*" class="hidden">
+              </div>
+            </div>
+
+            <!-- 5 Built-in Demo Scenarios Grid -->
+            <div class="mt-4">
+              <div class="demo-section-label">SIMULASI SKENARIO CEPAT (PITCHING HACKATHON)</div>
+              <div class="demo-grid">
+                <button id="btnDemoClean" class="demo-btn demo-btn--safe">
+                  <span class="demo-btn__label">1. UMKM Bersih</span>
+                  <span class="demo-btn__sublabel">Warung Kopi (Aman)</span>
+                </button>
+                <button id="btnDemoCharity" class="demo-btn demo-btn--warn">
+                  <span class="demo-btn__label">2. Kotak Amal Mismatch</span>
+                  <span class="demo-btn__sublabel">Infaq tapi MCC Game</span>
+                </button>
+                <button id="btnDemoJudol" class="demo-btn demo-btn--danger">
+                  <span class="demo-btn__label">3. Tiket Depo Judol</span>
+                  <span class="demo-btn__sublabel">Slot 3-Digit Acak</span>
+                </button>
+                <button id="btnDemoQuishing" class="demo-btn demo-btn--danger">
+                  <span class="demo-btn__label">4. Quishing URL</span>
+                  <span class="demo-btn__sublabel">Phishing Domain .vip</span>
+                </button>
+                <button id="btnDemoChecksum" class="demo-btn demo-btn--danger" style="grid-column: span 2;">
+                  <span class="demo-btn__label">5. Checksum Manipulasi</span>
+                  <span class="demo-btn__sublabel">CRC-16 Rusak / Disunting Ilegal</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ========================================== -->
+          <!-- LAYER 3: Security Verdict & Audit Receipt -->
+          <!-- ========================================== -->
+          <section id="layerResult" class="layer hidden">
+
+            <!-- Verdict Badge -->
+            <div id="verdictBadge" class="verdict-badge badge-safe">
+              APPROVE / AMAN
+            </div>
+
+            <!-- Risk Meter -->
+            <div class="risk-meter mt-2">
+              <div class="risk-meter__bar">
+                <div id="riskMeterBar" class="risk-meter-fill fill-safe" style="width: 12%;"></div>
+              </div>
+              <div id="riskScoreText" class="risk-meter__text">12 / 100 - Risiko Rendah</div>
+            </div>
+
+            <!-- Merchant Identity Card (Decoded EMVCo) -->
+            <div class="merchant-card mt-4">
+              <div class="merchant-card__row">
+                <span class="merchant-card__label">Nama Merchant</span>
+                <span id="resMerchantName" class="merchant-card__value">-</span>
+              </div>
+              <div class="merchant-card__row">
+                <span class="merchant-card__label">Kategori (MCC)</span>
+                <span id="resMCC" class="merchant-card__value">-</span>
+              </div>
+              <div class="merchant-card__row">
+                <span class="merchant-card__label">Domisili / Kota</span>
+                <span id="resCity" class="merchant-card__value">-</span>
+              </div>
+              <div class="merchant-card__row">
+                <span class="merchant-card__label">NMID Masked</span>
+                <span id="resNMID" class="merchant-card__value" style="font-family: var(--font-mono);">-</span>
+              </div>
+              <div class="merchant-card__row">
+                <span class="merchant-card__label">ZK Hash (SHA-256)</span>
+                <span id="resNMIDHash" class="merchant-card__value"
+                  style="font-family: var(--font-mono); color: var(--accent-cyan); font-size: 0.75rem;">-</span>
+              </div>
+              <div class="merchant-card__row">
+                <span class="merchant-card__label">Nominal Transaksi</span>
+                <span id="resAmount" class="merchant-card__value">-</span>
+              </div>
+              <div class="merchant-card__row">
+                <span class="merchant-card__label">Integritas Checksum</span>
+                <span id="resCRC" class="merchant-card__value">-</span>
+              </div>
+            </div>
+
+            <!-- Cognitive Insight Box (Google Gemini 2.5 Flash) -->
+            <div class="insight-box mt-4">
+              <div class="insight-box__header">
+                <span class="insight-box__title">Cognitive Threat Intelligence</span>
+                <span class="insight-box__source">Gemini 2.5 Flash</span>
+              </div>
+              <p id="resAiInsight" class="insight-box__text">
+                Memuat analisa semantik kecerdasan buatan...
+              </p>
+              <div id="resTechnicalReason"
+                style="font-size: 0.75rem; color: rgba(224,242,254,0.6); margin-top: 8px; border-top: 1px dashed rgba(56,189,248,0.2); padding-top: 6px;">
+                -
+              </div>
+            </div>
+
+            <!-- Action Controllers -->
+            <div class="mt-4 flex-col gap-sm">
+              <button id="btnCopyAuditCoupon" class="btn btn--secondary" style="font-size: 0.8rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Salin Kupon Audit Digital</span>
+              </button>
+
+              <div class="action-row">
+                <button id="btnRescan" class="btn btn--ghost">Scan QR Lain</button>
+                <button id="btnActionPrimary" class="btn btn-safe">Lanjut Transaksi</button>
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Floating Quick Scroll Dock (Scroll Atas & Bawah) -->
+        <div id="scrollDock" class="scroll-dock" aria-label="Navigasi Cepat Scroll Layar">
+          <button id="btnScrollTop" class="scroll-btn scroll-btn--top scroll-btn--disabled"
+            title="Scroll ke Paling Atas" aria-label="Scroll ke Paling Atas">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+            <span class="scroll-btn__tooltip">Ke Atas</span>
+          </button>
+          <div class="scroll-dock__divider"></div>
+          <button id="btnScrollBottom" class="scroll-btn scroll-btn--bottom" title="Scroll ke Paling Bawah"
+            aria-label="Scroll ke Paling Bawah">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <span class="scroll-btn__tooltip">Ke Bawah</span>
+          </button>
+        </div>
+
+        <!-- Global Footer -->
+        <footer class="app-footer">
+          <div class="app-footer__text">
+            ZERO-KNOWLEDGE PRIVACY • PATUH UU PDP NO. 27/2022 • Q-SPECT 2026
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="appToast">Notifikasi</div>
+
+  <!-- External CDNs: DOMPurify & jsQR -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/dompurify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+
+  <!-- Modular Application Scripts in Sequential Order -->
+  <script src="js/security.js"></script>
+  <script src="public/src/core/qrisParser.js"></script>
+  <script src="public/src/ai/geminiInspector.js"></script>
+  <script src="js/qris-decoder.js"></script>
+  <script src="js/threat-analyzer.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
