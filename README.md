@@ -115,13 +115,26 @@ Q-Spect/
 │   ├── qris-decoder.js        # Logika ekstraksi gambar QR & parser TLV EMVCo (Tag 59/60)
 │   ├── security.js            # Modul keamanan Zero-Trust & sanitasi DOMPurify (Anti-XSS)
 │   └── threat-analyzer.js     # Integrasi Google Gemini API & heuristik OSINT
+├── public/
+│   └── src/
+│       ├── ai/
+│       │   └── geminiInspector.js # Gemini Multimodal Vision & Fallback Inspector
+│       └── core/
+│           └── qrisParser.js      # EMVCo Standard TLV Parser & Judol Heuristics
+├── server/
+│   └── aiController.js        # O(1) SHA-256 Blacklist & Gemini Proxy Controller
 ├── tests/
+│   ├── run-tests.py           # Automated Test Suite (Python)
+│   ├── test-runner.js         # Automated Test Suite (Node.js)
 │   └── test-cases.md          # Kumpulan skenario pengujian (Normal, Judol, & XSS Test)
-├── .gitignore                 # Daftar pengecualian file Git
+├── .env.example               # Template environment variables (GEMINI_API_KEY)
+├── .gitignore                 # Daftar pengecualian file Git (.env, node_modules)
 ├── AGENTS.md                  # Konstitusi peran & batasan keamanan AI Agent
 ├── DESIGN.md                  # Spesifikasi desain visual & token warna untuk Stitch MCP
 ├── index.html                 # Antarmuka utama aplikasi Q-Spect
+├── package.json               # Konfigurasi dependensi dan skrip proyek
 ├── README.md                  # Dokumentasi utama proyek
+├── server.js                  # Express Server & Zero-Knowledge API Proxy
 └── SKILLS.md                  # Resep prosedural teknis untuk AI Agent
 ```
 
@@ -131,7 +144,7 @@ Q-Spect/
 
 Proyek ini dibangun sepenuhnya mengikuti disiplin **Context Engineering** dan **Harness Engineering** modern untuk mencegah *AI-Slop* serta menjaga efisiensi anggaran token:
 
-1. 📜 **[`AGENTS.md`](./AGENTS.md) (System Constitguution)**  
+1. 📜 **[`AGENTS.md`](./AGENTS.md) (System Constitution)**  
    Mengatur pembagian peran agen (*Security Architect*, *UI Stitch Orchestrator*, *Cognitive Engineer*) dan menegakkan batasan keras (*Zero-Trust DOM*, larangan `innerHTML`, serta privasi *client-side*).
 2. 🎨 **[`DESIGN.md`](./DESIGN.md) (Visual DNA Specification)**  
    Mendokumentasikan token warna heksadesimal bertema *Dark Cybersecurity*, tipografi, dan hierarki komponen yang menjadi acuan bagi **Google Stitch MCP** untuk men-generate antarmuka secara otomatis (*Zero-Touch UI Generation*).
@@ -144,23 +157,47 @@ Proyek ini dibangun sepenuhnya mengikuti disiplin **Context Engineering** dan **
 
 ## 🚀 Cara Menjalankan Proyek
 
-Karena **Q-Spect** dirancang dengan arsitektur *100% Client-Side*, Anda tidak memerlukan instalasi database atau server backend yang rumit:
+**Q-Spect** dapat dijalankan baik melalui server full-stack terpadu maupun web server statis:
 
-1. **Clone Repositori Ini:**
+### Opsi 1: Menjalankan Full-Stack Server (Direkomendasikan)
+1. **Clone Repositori:**
    ```bash
-   https://github.com/Gemaelreivano/Project-Q-Spect.git
+   git clone https://github.com/Gemaelreivano/Project-Q-Spect.git
+   cd Project-Q-Spect
    ```
-2. **Jalankan Menggunakan Server Lokal:**
-   - **VS Code:** Klik kanan pada `index.html` lalu pilih **"Open with Live Server"**.
-   - **Terminal (Node.js / Python):**
-     ```bash
-     npx serve
-     # atau
-     python -m http.server 8000
-     ```
-3. **Masukkan Gemini API Key & Uji Coba:**
-   - Tempelkan **Google Gemini API Key** Anda pada kolom konfigurasi di bagian atas aplikasi, lalu klik **Simpan Key**.
-   - Gunakan tombol **Simulasi Cepat** atau masukkan sampel payload dari [`tests/test-cases.md`](./tests/test-cases.md) untuk menguji deteksi ancaman secara *real-time*!
+2. **Pasang Dependensi:**
+   ```bash
+   npm install
+   ```
+3. **Konfigurasi Environment:**
+   Salin file `.env.example` ke `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   *(Opsional: Masukkan Gemini API Key Anda di `.env`. Jika dikosongkan, sistem otomatis menggunakan Smart Fail-Safe Mock Fallback).*
+4. **Jalankan Aplikasi:**
+   ```bash
+   npm run dev
+   # atau
+   npm start
+   ```
+   Buka peramban di **`http://localhost:3000`**.
+
+5. **Menjalankan Automated Test Suite:**
+   ```bash
+   npm test
+   # atau versi Python:
+   npm run test:py
+   ```
+
+### Opsi 2: Menjalankan Secara Static (Client-Side Only)
+- **VS Code:** Klik kanan pada `index.html` lalu pilih **"Open with Live Server"**.
+- **Terminal (Python/npx):**
+  ```bash
+  python -m http.server 8000
+  # atau
+  npx serve
+  ```
 
 ---
 

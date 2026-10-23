@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "test": "node tests/test-runner.js",
+    "test:py": "python tests/run-tests.py"
   },
   "keywords": [
     "qris",
