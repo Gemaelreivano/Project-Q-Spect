@@ -157,3 +157,4 @@
    ```javascript
    document.getElementById('resMerchant').textContent = decodedMerchantName;
    ```
+   (masukan ini semua di bagian file css)
